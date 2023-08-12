@@ -35,7 +35,7 @@ friends:[
     id: false,
   }
 );
-// Create a virtual property `friendCount` that gets the amount of comments per post
+// Create a virtual property `friendCount` that gets the amount of friends the user has
 userSchema.virtual("friendCount").get(function () {
     return this.friends.length;
   });
