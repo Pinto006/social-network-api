@@ -1,4 +1,4 @@
-const { Thought } = require('../models');
+const { Thought, User } = require('../models');
 
 module.exports = {
   // Get all thoughts
@@ -77,7 +77,7 @@ module.exports = {
     }
   },
 
-  // Add a friend to a user
+  // Add a reaction to a thought
     async  addReaction (req, res) {
     console.log('You are adding a reaction');
     console.log(req.body);

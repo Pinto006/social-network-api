@@ -18,7 +18,8 @@ const reactionSchema = new Schema(
         },
         createdAt: {
             type: Date, 
-            default: Date.now,
+            default: Date.now(),
+            get: (date) => date.toLocaleDateString('en-US'),
         },
     }
 );
@@ -35,7 +36,9 @@ const thoughtSchema = new Schema(
     },
     createdAt: {
         type: Date, 
-        default: Date.now,
+        default: Date.now(),
+        get: (date) => date.toLocaleDateString('en-US'),
+        
     },
     user:{
         type: String,
@@ -44,9 +47,11 @@ const thoughtSchema = new Schema(
     },
     reactions: [reactionSchema],
   },
+
   {
     toJSON: {
       getters: true,
+      virtuals: true,
     },
     id: false,
   }
@@ -56,6 +61,6 @@ thoughtSchema.virtual("reactionCount").get(function () {
     return this.reaction.length;
   });
 // Initialize our Thought model
-  const thought = model('thought', thoughtSchema);
+  const Thought = model('Thought', thoughtSchema);
 
-module.exports = thought;
+module.exports = Thought;
