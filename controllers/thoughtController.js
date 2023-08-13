@@ -1,4 +1,5 @@
-const { Thought, User } = require('../models/thought');
+const { User, Thought } = require('../models/thought');
+const {Types} = require('mongoose');
 
 module.exports = {
   // Get all thoughts
@@ -33,16 +34,19 @@ module.exports = {
     try {
       const thought = await Thought.create(req.body);
       const user = await User.findOneAndUpdate(
-        { _id: req.body.userId },
-        { $addToSet: { thought: thought._id } },
+        { _id: req.params.userId },
+        { $addToSet: { thought: req.params.thoughtId } },
         { runValidators: true, new: true }
       );
-
-      res.json(user);
+      if (!user) {
+        res.status(404).json({ message: 'No thought with this id!' });
+      }
+      res.json(thought);
     } catch (err) {
       res.status(500).json(err);
     }
   },
+
   //update thought 
   async updateThought (req, res) {
     try {
