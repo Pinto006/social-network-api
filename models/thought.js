@@ -40,7 +40,7 @@ const thoughtSchema = new Schema(
         get: (date) => date.toLocaleDateString('en-US'),
         
     },
-    user:{
+    username:{
         type: String,
         required: true,
         
