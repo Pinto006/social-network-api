@@ -39,7 +39,7 @@ module.exports = {
         { runValidators: true, new: true }
       );
 
-      res.json(thought, user);
+      res.json(user);
     } catch (err) {
       res.status(500).json(err);
     }
