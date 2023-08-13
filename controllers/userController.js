@@ -18,7 +18,7 @@ module.exports = {
     try {
       const user = await User.findOne({ _id: req.params.userId })
 
-        .populate({ path: "thoughts", select: "-__v" })
+        .populate({ path: "thought", select: "-__v" })
         .populate({ path: "friends", select: "-__v" });
 
       if (!user) {
@@ -106,12 +106,10 @@ module.exports = {
       );
 
       if (!friend) {
-        return res
-          .status(404)
-          .json({ message: 'No friend found with that ID :(' });
+        return res.status(404).json({ message: 'No friend found with that ID' });
       }
 
-      res.json(friend);
+      res.json('Friend has been removed');
     } catch (err) {
       res.status(500).json(err);
     }
