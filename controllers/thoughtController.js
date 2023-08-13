@@ -1,4 +1,4 @@
-const { User, Thought } = require('../models/thought');
+const { User, Thought } = require('../models');
 const {Types} = require('mongoose');
 
 module.exports = {
@@ -34,8 +34,8 @@ module.exports = {
     try {
       const thought = await Thought.create(req.body);
       const user = await User.findOneAndUpdate(
-        { _id: req.params.userId },
-        { $addToSet: { thought: req.params.thoughtId } },
+        { _id: req.body.username },
+        { $addToSet: { thought: thought._id } },
         { runValidators: true, new: true }
       );
       if (!user) {
