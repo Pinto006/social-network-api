@@ -12,7 +12,7 @@ The technologies that were used are listed below:
 
 social network API URL:  https://github.com/Pinto006/social-network-api
 
-video recording URL: 
+video recording URL: https://drive.google.com/file/d/1upNnFcy7eBXCqBUW9UsYFtrPE8KoIwOb/view
 
 ![Alt text](images/Screenshot.png)
 
